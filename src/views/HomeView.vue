@@ -28,8 +28,8 @@ const projects = ref([
 ]);
 
 const certifications = ref([
-  { id: 1, name: 'Google Data Analytics', issuer: 'Google', icon: 'G' },
-  { id: 2, name: 'IBM Data Science', issuer: 'IBM', icon: 'I' },
+  { id: 1, name: 'Data Analyst Associate', issuer: 'DataCamp', icon: '/icons/DA.png' },
+  { id: 2, name: 'Google Data Analytics Professional Certificate', issuer: 'Google', icon: '/icons/google.png' },
   { id: 3, name: 'Meta Back-End Developer', issuer: 'Meta', icon: 'M' },
   { id: 4, name: 'Python for Everybody', issuer: 'University of Michigan', icon: 'P' }
 ]);
@@ -154,7 +154,9 @@ const scrollTo = (id) => {
         <h3 class="section-title"><span>04.</span> Certificaciones</h3>
         <div class="cert-grid">
           <div v-for="cert in certifications" :key="cert.id" class="cert-card">
-            <div class="cert-icon">{{ cert.icon }}</div>
+            <div class="cert-icon">
+              <img :src="cert.icon" :alt="cert.name" class="cert-img" />
+            </div>
             <div class="cert-info">
               <h4>{{ cert.name }}</h4>
               <p>{{ cert.issuer }}</p>
