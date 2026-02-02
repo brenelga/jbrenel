@@ -8,22 +8,22 @@ const projects = ref([
     id: 1,
     title: 'Sistema de Clasificación de Riesgo Municipal',
     description: 'Este proyecto implementa un modelo de Machine Learning para clasificar el nivel de riesgo por municipio en base al comportamiento histórico de delitos relacionados con vehículos.',
-    tech: ['Python', 'Pandas', 'Scikit-learn'],
+    tech: ['Python', 'Pandas', 'Scikit-learn', 'Random Forest', 'Clustering'],
     link: 'https://github.com/brenelga/Modelo'
   },
   {
     id: 2,
     title: 'Coffee Card',
-    description: '',
-    tech: ['Vue.js', 'D3.js', 'Data Analysis'],
-    link: '#'
+    description: 'Sistema que combina Web, App móvil y dispositivos IoT con RFID para control y gestión de accesos',
+    tech: ['RFID', 'IoT', 'Web', 'App móvil', 'Laravel'],
+    link: 'https://github.com/brenelga/CoffeeCardAppWeb'
   },
   {
     id: 3,
-    title: 'Sistema de Gestión',
-    description: 'Plataforma multiplataforma para la gestión eficiente de recursos, demostrando habilidades en arquitectura de software.',
-    tech: ['Java', 'Spring Boot', 'MySQL'],
-    link: '#'
+    title: 'Encuesta',
+    description: 'Plataforma de encuestas para recolectar respuestas, almacenarlas en MongoDB y generar análisis de datos con Python. Desplegada en Railway.',
+    tech: ['Python', 'MongoDB', 'Data Analysis', 'Railway'],
+    link: 'https://github.com/brenelga/Encuesta'
   }
 ]);
 
