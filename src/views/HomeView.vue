@@ -27,12 +27,42 @@ const projects = ref([
   }
 ]);
 
+const education = ref([
+  {
+    id: 1,
+    period: 'Enero 2025 - Agosto 2026',
+    degree: 'Ingeniería en Desarrollo y Gestión de Software',
+    school: 'Universidad Tecnológica de la Zona Metropolitana de Guadalajara',
+    details: 'Especialización en Desarrollo de Software.'
+  },
+  {
+    id: 2,
+    period: 'Enero 2023 - Diciembre 2024',
+    degree: 'TSU en Tecnologías de la Información',
+    school: 'Universidad Tecnológica de la Zona Metropolitana de Guadalajara',
+    details: 'Área de Desarrollo de Software Multiplataforma.',
+    cedula: 'Cédula Profesional: 15104776' // Placeholder
+  }
+]);
+
 const certifications = ref([
   { id: 1, name: 'Data Analyst Associate', issuer: 'DataCamp', icon: '/icons/DA.png' },
   { id: 2, name: 'Google Data Analytics Professional Certificate', issuer: 'Google', icon: '/icons/google.png' },
-  { id: 3, name: 'Meta Back-End Developer', issuer: 'Meta', icon: 'M' },
-  { id: 4, name: 'Python for Everybody', issuer: 'University of Michigan', icon: 'P' }
+  { id: 3, name: 'Data Science Fundamentals Level 1', issuer: 'IBM Skills Build', icon: '/icons/DSF.png' },
+  { id: 4, name: 'Machine Learning with Python', issuer: 'IBM Skills Build', icon: '/icons/ML.png' },
+  { id: 5, name: 'Databases and SQL for Data Science', issuer: 'IBM Skills Build', icon: '/icons/SQL.png' },
+  { id: 6, name: 'Data Visualization with Python', issuer: 'IBM Skills Build', icon: '/icons/DV.png' },
+  { id: 7, name: 'Hadoop Fundations Level 1', issuer: 'IBM Skills Build', icon: '/icons/Hadoop.png' },
+  { id: 8, name: 'DL-00-A01 Digital Awareness', issuer: 'OpenEDG', icon: '/icons/A01.png' }
 ]);
+
+const socials = ref([
+  { id: 1, name: 'LinkedIn', url: 'https://linkedin.com/in/brenelga', icon: 'linkedin' },
+  { id: 2, name: 'GitHub', url: 'https://github.com/brenelga', icon: 'github' },
+  { id: 3, name: 'Credly', url: 'https://www.credly.com/users/brenelga', icon: 'credly' },
+  { id: 4, name: 'Email', url: 'mailto:brenel.galicia@gmail.com', icon: 'email' }
+]);
+
 
 const scrollTo = (id) => {
   const element = document.getElementById(id);
@@ -102,20 +132,13 @@ const scrollTo = (id) => {
       <div class="container">
         <h3 class="section-title"><span>02.</span> Educación</h3>
         <div class="timeline">
-          <div class="timeline-item">
+          <div v-for="edu in education" :key="edu.id" class="timeline-item">
             <div class="timeline-content">
-              <span class="date">Enero 2025 - Agosto 2026</span>
-              <h4>Ingeniería en Desarrollo y Gestión de Software</h4>
-              <h5>Universidad Tecnológica de la Zona Metropolitana de Guadalajara</h5>
-              <p>Especialización en Desarrollo de Software.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <span class="date">Enero 2023 - Diciembre 2024</span>
-              <h4>TSU en Tecnologías de la Información</h4>
-              <h5>Universidad Tecnológica de la Zona Metropolitana de Guadalajara</h5>
-              <p>Área de Desarrollo de Software Multiplataforma.</p>
+              <span class="date">{{ edu.period }}</span>
+              <h4>{{ edu.degree }}</h4>
+              <h5>{{ edu.school }}</h5>
+              <p>{{ edu.details }}</p>
+              <p v-if="edu.cedula" class="cedula-text">{{ edu.cedula }}</p>
             </div>
           </div>
         </div>
@@ -162,6 +185,24 @@ const scrollTo = (id) => {
               <p>{{ cert.issuer }}</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section">
+      <div class="container">
+        <h3 class="section-title"><span>05.</span> Perfiles Profesionales</h3>
+        <div class="socials-container">
+          <a v-for="social in socials" :key="social.id" :href="social.url" target="_blank" class="social-card">
+            <div class="social-icon">
+              <!-- Inline SVGs based on social.icon -->
+              <svg v-if="social.icon === 'linkedin'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <svg v-if="social.icon === 'github'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              <svg v-if="social.icon === 'credly'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+              <svg v-if="social.icon === 'email'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <span>{{ social.name }}</span>
+          </a>
         </div>
       </div>
     </section>
@@ -469,6 +510,58 @@ const scrollTo = (id) => {
   padding: 2rem 0;
   color: var(--text-secondary);
   font-size: 0.9rem;
+}
+
+/* Cédula */
+.cedula-text {
+  color: var(--text-accent);
+  font-family: monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1px dashed var(--text-accent);
+  border-radius: 4px;
+}
+
+/* Socials */
+.socials-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: start; /* Align left to match flow, or center? Let's go with start or grid */
+}
+
+/* Let's actually use grid for consistency */
+.socials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  gap: 1.5rem;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  transition: var(--transition-normal);
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.social-card:hover {
+  transform: translateY(-5px);
+  color: var(--text-accent);
+  background-color: var(--bg-tertiary);
+}
+
+.social-icon {
+  color: var(--text-accent);
 }
 
 /* Responsive */
